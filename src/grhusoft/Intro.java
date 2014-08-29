@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package grhusoft;
 
 /**
@@ -17,6 +16,7 @@ public class Intro extends javax.swing.JFrame {
      */
     public Intro() {
         initComponents();
+        //this.setUndecorated(true);
     }
 
     /**
@@ -47,7 +47,7 @@ public class Intro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main (String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -74,7 +74,11 @@ public class Intro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Intro().setVisible(true);
+                Intro i = new Intro();
+                //new Intro().setVisible(true);
+                i.setVisible(true);
+                i.setLocationRelativeTo(null);
+
             }
         });
     }
