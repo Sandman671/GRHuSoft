@@ -7,7 +7,7 @@ package grhusoft;
 
 /**
  *
- * @author Marcelo Cazon
+ * @author Sandman <sandman.net@gmail.com>
  */
 public class Intro extends javax.swing.JFrame {
 
@@ -16,7 +16,9 @@ public class Intro extends javax.swing.JFrame {
      */
     public Intro() {
         initComponents();
-        //this.setUndecorated(true);
+       //this.setUndecorated(true);
+        Login l = new Login();
+        l.setVisible(true);
     }
 
     /**
@@ -28,18 +30,13 @@ public class Intro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GRHuSoft Cargando...");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grhusoft/resources/intro.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,7 +72,6 @@ public class Intro extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Intro i = new Intro();
-                //new Intro().setVisible(true);
                 i.setVisible(true);
                 i.setLocationRelativeTo(null);
 
@@ -84,5 +80,6 @@ public class Intro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
