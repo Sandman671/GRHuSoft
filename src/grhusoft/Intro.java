@@ -5,20 +5,42 @@
  */
 package grhusoft;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 /**
  *
  * @author Sandman <sandman.net@gmail.com>
  */
 public class Intro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Intro
-     */
+    private int trys = 3;
+    private String s = "LOGIN INCORRECTO " + trys + " INTENTOS RESTANTES: ";
+    private String ss = "BLOQUEADO...CONSULTE AL ADMINISTRADOR";
+    private String c = "restore login";
+    private String cc = "exit";
+    private String ccc = "close";
+    JLabel jLabel2 = new JLabel();
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private boolean b;
+
     public Intro() {
         initComponents();
-       //this.setUndecorated(true);
+        //this.setUndecorated(true);
         Login l = new Login();
         l.setVisible(true);
+        jTextField1.setVisible(b);
+
+        jLabel1.add(jLabel2);
+        jLabel2.setBounds(0, 0, screenSize.width, screenSize.height);
+        jLabel2.setVisible(false);
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18));
+        jLabel2.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel2.setText(s);
+        KeyListener listener = new MyKeyListener();
+        addKeyListener(listener);
+        setFocusable(true);
     }
 
     /**
@@ -31,6 +53,7 @@ public class Intro extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GRHuSoft Cargando...");
@@ -38,12 +61,72 @@ public class Intro extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grhusoft/resources/intro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1, java.awt.BorderLayout.PAGE_END);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        jTextField1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String t = jTextField1.getText();
+                jTextField1.setText("");
+                if (t.equals(c)) {
+                    Login l = new Login();
+                    jTextField1.setVisible(false);
+                    revalidate();
+                    repaint();
+                    l.setVisible(true);
+                } else if (t.equals(cc)) {
+                    jTextField1.setVisible(false);
+                    revalidate();
+                    repaint();
+                } else if (t.equals(ccc)) {
+                    System.exit(0);
+                }
+    }//GEN-LAST:event_jTextField1ActionPerformed
+        });
+    }
+
+    public void setConsole() {
+
+        b = true;
+        jTextField1.setVisible(b);
+    }
+
+    public class MyKeyListener implements KeyListener {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println("keyPressed=" + KeyEvent.getKeyText(e.getKeyCode()));
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            System.out.println("keyReleased=" + KeyEvent.getKeyText(e.getKeyCode()));
+            if (e.VK_C == e.getKeyCode()) {
+                setConsole();
+                System.out.println(b);
+                revalidate();
+                repaint();
+            }
+        }
+    }
+
+    public void actualizarPantalla() {
+        SwingUtilities.updateComponentTreeUI(this);
+        this.validateTree();
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -81,5 +164,6 @@ public class Intro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
