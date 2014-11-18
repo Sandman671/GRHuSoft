@@ -141,11 +141,11 @@ public class Login extends javax.swing.JFrame {
                 //System.out.println("Cantidad de filas obtenidas en la consulta: " + cont);
                 if (rol == null ? "Administrador" == null : rol.equals("Administrador")) {
                     System.out.println("Es administrador.");
-                    //a.jMenu3.setVisible(true);
+                    ma.jMenu4.setVisible(true);
 
                 } else {
                     System.out.println("Es usuario común.");
-                    //a.jMenu3.setVisible(false);
+                    ma.jMenu4.setVisible(false);
                 }
             }
             a--;

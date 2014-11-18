@@ -18,7 +18,7 @@ public boolean conectaBD(){
 boolean resp=false;
 try{
     Class.forName("org.postgresql.Driver").newInstance();
-    this.con=DriverManager.getConnection("jdbc:postgresql://localhost:5433/grhusoft","postgres","sandmankpo");
+    this.con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/grhusoft","postgres","sandman");
     //System.out.print("Se conecto a la bd");
     resp=true;
     }catch(Exception e){
